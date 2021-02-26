@@ -1,31 +1,68 @@
 <template>
-    <main class="form-signin">
-    <form>
+    <form class="form-signin" @submit.prevent="submit">
         <h1 class="h3 mb-3 fw-normal">Please Register</h1>
 
-        <label for="first_name" class="visually-hidden">First Name</label>
-        <input type="text" id="first_name" class="form-control" placeholder="First Name" required>
+        <!--<label for="first_name" class="visually-hidden">First Name</label>-->
+        <input type="text" id="first_name" class="form-control" placeholder="First Name" required v-model="firstName">
 
-        <label for="last_name" class="visually-hidden">Last Name</label>
-        <input type="text" id="last_name" class="form-control" placeholder="Last Name" required>
+        <!--<label for="last_name" class="visually-hidden">Last Name</label>-->
+        <input type="text" id="last_name" class="form-control" placeholder="Last Name" required v-model="lastName">
 
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+        <!--<label for="inputEmail" class="visually-hidden">Email address</label>-->
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required v-model="email">
 
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <!--<label for="inputPassword" class="visually-hidden">Password</label>-->
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
 
-        <label for="passwordConfirm" class="visually-hidden">Password Confirm</label>
-        <input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required>
+        <!--<label for="passwordConfirm" class="visually-hidden">Password Confirm</label>-->
+        <input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required v-model="passwordConfirm">
+
+        <!--<label for="role" class="visually-hidden">role</label>-->
+        <input type="text" id="role" class="form-control" placeholder="role" required v-model="role">
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
     </form>
-    </main>
 </template>
 
 <script>
+    import {ref} from 'vue';
+    import axios from 'axios';
+    import {useRouter} from 'vue-router';
+
     export default {
-        name: "Register"
+        name: "Register",
+        setup() {
+            const firstName = ref('');
+            const lastName = ref('');
+            const email = ref('');
+            const password = ref('');
+            const passwordConfirm = ref('');
+            const role = ref('');
+            const router = useRouter();
+
+            const submit = async ()=>{
+                const response = await axios.post('http://admin.test/api/register', {
+                    first_name: firstName.value,
+                    last_name: lastName.value,
+                    email: email.value,
+                    password: password.value,
+                    password_confirm: passwordConfirm.value,
+                    role_id: role.value,
+                });
+
+                await router.push('http://localhost:8080/login');
+            }
+
+            return {
+                firstName,
+                lastName,
+                email,
+                password,
+                passwordConfirm,
+                role,
+                submit
+            }
+        }
     }
 </script>
 
