@@ -15,6 +15,7 @@
     import Menu from "@/components/Menu";
     import Nav from "@/components/Nav";
     import axios from "axios";
+    import {useRouter} from 'vue-router';
 
         export default {
         name: "Secure",
@@ -23,9 +24,15 @@
             Nav
         },
         setup() {
+            const router = useRouter();
             onMounted(async () => {
-                const response = await axios.get('user');
-                console.log(response);
+                try { 
+                    const response = await axios.get('user');
+                    console.log(response);
+                } catch (e) {
+                    await router.push('/login')
+                }
+                
             } );
         }
     }
