@@ -41,7 +41,7 @@
             const router = useRouter();
 
             const submit = async ()=>{
-                const response = await axios.post('http://admin.test/api/register', {
+                await axios.post('register', {
                     first_name: firstName.value,
                     last_name: lastName.value,
                     email: email.value,
