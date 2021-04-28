@@ -1,48 +1,46 @@
 <template>
-    <Nav />
+    <Nav :user="user" />
     <div class="container-fluid">
         <div class="row">
             <Menu />
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2>Section title</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>random</td>
-                                <td>data</td>
-                                <td>placeholder</td>
-                                <td>text</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <router-view />
             </main>
         </div>
     </div>
 </template>
 
 <script>
+    import {onMounted, ref}   from 'vue';
     import Menu from "@/components/Menu";
     import Nav from "@/components/Nav";
+    import axios from "axios";
+    import {useRouter} from 'vue-router';
 
-    export default {
+        export default {
         name: "Secure",
         components: {
             Menu,
             Nav
+        },
+        setup() {
+            const router = useRouter();
+            const user = ref(null);
+
+            onMounted(async () => {
+                try { 
+                    const response = await axios.get('user');
+
+                    user.value = response.data.data;
+                } catch (e) {
+                    await router.push('/login')
+                }
+                
+            } );
+
+            return {
+                user
+            };
         }
     }
 </script>
@@ -63,7 +61,7 @@
      */
 
     .sidebar {
-        position: fixed;
+        position: relative;
         top: 0;
         /* rtl:raw:
         right: 0;

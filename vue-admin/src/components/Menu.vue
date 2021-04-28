@@ -3,9 +3,13 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        Dashboard
-                    </a>
+                    <router-link to="/dashboard" active-class="active" class="nav-link">Dashboard</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/users" active-class="active" class="nav-link">Users</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/roles" active-class="active" class="nav-link">Roles</router-link>
                 </li>
             </ul>
         </div>
