@@ -61,7 +61,7 @@
      */
 
     .sidebar {
-        position: fixed;
+        position: relative;
         top: 0;
         /* rtl:raw:
         right: 0;
