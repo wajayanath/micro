@@ -58,7 +58,6 @@
 
             const load = async ()=> {
                 const response = await axios.get(`users?page=${page.value}`);
-
                 users.value = response.data.data;
                 lastpage.value = response.data.meta.last_page;
             }
