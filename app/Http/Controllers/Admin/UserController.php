@@ -8,6 +8,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\User;
+use App\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,12 @@ class UserController
         $user = User::create($request->only('first_name', 'last_name', 'email') + [
                 'password' => Hash::make(1234),
             ]);
+
+        UserRole::create([
+            'user_id' => $user->id,
+            'role_id' => $request->input('role_id')
+        ]);
+
         return response(new UserResource($user), Response::HTTP_CREATED);
     }
 
@@ -49,7 +56,14 @@ class UserController
 
         $user = User::find($id);
 
-        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
+        $user->update($request->only('first_name', 'last_name', 'email'));
+
+        UserRole::where('user_id', $user->id)->delete();
+
+        UserRole::create([
+            'user_id' => $user->id,
+            'role_id' => $request->input('role_id')
+        ]);
 
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
@@ -63,34 +77,4 @@ class UserController
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
-    public function user()
-    {
-        $user = \Auth::user();
-
-        return (new UserResource($user))->additional([
-            "data" => [
-                'permissions' => $user->permissions()
-            ]
-        ]);
-    }
-
-    public function updateInfo(UpdateInfoRequest $request)
-    {
-        $user = \Auth::user();
-
-        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
-
-        return response(new UserResource($user), Response::HTTP_ACCEPTED);
-    }
-
-    public function updatePassword(UpdatePasswordRequest $request)
-    {
-        $user = \Auth::user();
-
-        $user->update([
-            'password' => Hash::make($request->input('password'))
-        ]);
-
-        return response(new UserResource($user), Response::HTTP_ACCEPTED);
-    }
 }
