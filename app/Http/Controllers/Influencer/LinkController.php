@@ -24,6 +24,6 @@ class LinkController
             ]);
         }
 
-        return new LinkResource($link);
+         return new LinkResource($link);
     }
 }
