@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Checkout;
 use App\Link;
 use App\Order;
 use App\OrderItem;
+use App\Product;
 use Illuminate\Http\Request;
 
 class OrderController
@@ -12,6 +13,8 @@ class OrderController
     public function store(Request $request)
     {
         $link = Link::whereCode($request->input('code'))->first();
+
+        \DB::beginTransaction();
         $order = new Order();
 
         $order->first_name = $request->input('first_name');
@@ -41,6 +44,8 @@ class OrderController
 
             $orderItem->save();
         }
+
+        \DB::commit();
 
         return $order;
     }
