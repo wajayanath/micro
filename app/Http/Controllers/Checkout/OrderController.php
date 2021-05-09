@@ -6,7 +6,9 @@ use App\Link;
 use App\Order;
 use App\OrderItem;
 use App\Product;
+use Cartalyst\Stripe\Stripe;
 use Illuminate\Http\Request;
+use function response;
 
 class OrderController
 {
@@ -29,6 +31,8 @@ class OrderController
         $order->country = $request->input('country');
         $order->zip = $request->input('zip');
 
+        $lineItems = [];
+
         $order->save();
 
         foreach ($request->input('items') as $item) {
@@ -43,10 +47,49 @@ class OrderController
             $orderItem->admin_revenue = 0.9 * $product->price * $item['quantity'];
 
             $orderItem->save();
+
+            $lineItems[] = [
+                'name' => $product->title,
+                'description' => $product->description,
+                'images' => [
+                    $product->image,
+                ],
+                'amount' => 100 * $product->price,
+                'currency' => 'usd',
+                'quantity' => $orderItem->quantity,
+            ];
         }
+
+        $stripe = Stripe::make(env('STRIPE_SECRET'));
+
+        $source = $stripe->checkout()->sessions()->create([
+            'payment_method_type' => ['card'],
+            'line_items' => $lineItems,
+            'success_url' => env('CHECKOUT_URL').'/success?source={CHECKOUT_SESSION_ID}',
+            'cancel_url' => env('CHECKOUT_URL').'/error',
+        ]);
+
+        $order->transaction_id = $source['id'];
+        $order->save();
 
         \DB::commit();
 
-        return $order;
+        return $source;
+    }
+
+    public function confirm(Request $request)
+    {
+        if(!$order = Order::whereTransactionId($request->input('source'))->first()){
+            return response([
+                'error' => 'Order not found'
+            ], 404);
+        }
+
+        $order->complete = 1;
+        $order->save();
+
+        return response([
+           'message' => 'success'
+        ]);
     }
 }

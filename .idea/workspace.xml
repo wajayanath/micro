@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="915af16c-d679-4796-92c8-7fb076abe5ad" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-admin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Checkout/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Checkout/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,23 +36,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="66" column="51" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
+            <state relative-caret-position="317">
+              <caret line="67" column="58" selection-start-line="67" selection-start-column="58" selection-end-line="67" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Checkout/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="2133">
+              <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
               <folding>
                 <element signature="e#49#62#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="50" column="12" selection-start-line="50" selection-end-line="50" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2021_05_08_053954_add_transaction_id_to_orders_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2021_05_08_053954_add_transaction_id_to_orders_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -59,7 +83,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Order.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_02_06_044930_create_permissions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_02_06_050610_create_role_permissions_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/PermissionSeeder.php" />
@@ -78,7 +101,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
         <option value="$PROJECT_DIR$/config/cors.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ImageController.php" />
@@ -108,8 +130,10 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Checkout/LinkController.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/UserResource.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Influencer/OrderController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2021_05_08_053954_add_transaction_id_to_orders_table.php" />
+        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Checkout/OrderController.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
       </list>
     </option>
   </component>
@@ -245,6 +269,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/cartalyst/stripe" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -259,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -342,11 +368,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="api&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/routes/api.php&#10;add_f&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/migrations/2021_05_04_174114_add_fields_to_orders_table.php&#10;link&#9;null&#9;null&#10;auth&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/app/Providers/AuthServiceProvider.php&#10;ker&#9;null&#9;null&#10;kern&#9;null&#9;null&#10;create&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/migrations/2014_10_12_000000_create_users_table.php&#10;user&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/app/User.php&#10;add&#9;null&#9;null&#10;orderfa&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/factories/OrderFactory.php&#10;handler&#9;null&#9;null&#10;AuthSe&#9;null&#9;null&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/.env&#10;UrlGenerator&#9;null&#9;null&#10;auths&#9;null&#9;null&#10;AppServiceProvider&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="add_tra&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/migrations/2021_05_08_053954_add_transaction_id_to_orders_table.php&#10;api&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/routes/api.php&#10;add_f&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/migrations/2021_05_04_174114_add_fields_to_orders_table.php&#10;link&#9;null&#9;null&#10;auth&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/app/Providers/AuthServiceProvider.php&#10;ker&#9;null&#9;null&#10;kern&#9;null&#9;null&#10;create&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/migrations/2014_10_12_000000_create_users_table.php&#10;user&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/app/User.php&#10;add&#9;null&#9;null&#10;orderfa&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/database/factories/OrderFactory.php&#10;handler&#9;null&#9;null&#10;AuthSe&#9;null&#9;null&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/micro/laravel-admin/.env&#10;UrlGenerator&#9;null&#9;null&#10;auths&#9;null&#9;null&#10;AppServiceProvider&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Checkout" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -414,16 +439,18 @@
       <workItem from="1620136493667" duration="4379000" />
       <workItem from="1620189308312" duration="7015000" />
       <workItem from="1620235702019" duration="2447000" />
-      <workItem from="1620273090323" duration="2453000" />
+      <workItem from="1620273090323" duration="3282000" />
+      <workItem from="1620317887032" duration="710000" />
+      <workItem from="1620450225363" duration="5136000" />
+      <workItem from="1620537594643" duration="598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128935000" />
+    <option name="totallyTimeSpent" value="136208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-8" width="1296" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -431,8 +458,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.14961496" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21359223" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3872387" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22330096" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928804" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -460,13 +487,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Resources/RoleResource.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -540,13 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -791,20 +804,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="66" column="51" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
+        <state relative-caret-position="1350">
+          <caret line="50" column="12" selection-start-line="50" selection-end-line="50" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2021_05_08_053954_add_transaction_id_to_orders_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Checkout/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="2133">
+          <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
           <folding>
             <element signature="e#49#62#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="67" column="58" selection-start-line="67" selection-start-column="58" selection-end-line="67" selection-end-column="58" />
         </state>
       </provider>
     </entry>
