@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Checkout;
 
+use App\Events\OrderCompletedEvent;
 use App\Link;
 use App\Order;
 use App\OrderItem;
@@ -89,15 +90,7 @@ class OrderController
         $order->complete = 1;
         $order->save();
 
-        \Mail::send('admin', ['order' => $order], function(Message $message){
-            $message->to('admin@admin.com');
-            $message->subject('A new order has been completed');
-        });
-
-        \Mail::send('influencer', ['order' => $order], function(Message $message) use ($order) {
-            $message->to($order->influencer_email);
-            $message->subject('A new order has been completed');
-        });
+        event(new OrderCompletedEvent($order));
 
         return response([
            'message' => 'success'
