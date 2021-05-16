@@ -34,47 +34,47 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Personal Info</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" @submit.prevent="submit">
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+              <input v-model="first_name" type="text" class="form-control" id="firstName" placeholder="First name" required>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+              <input v-model="last_name" type="text" class="form-control" id="lastName" placeholder="Last name" required>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+            <input v-model="email" type="email" class="form-control" id="email" placeholder="you@example.com" required>
           </div>
 
           <div class="mb-3">
             <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+            <input v-model="address" type="text" class="form-control" id="address" placeholder="1234 Main St" required>
           </div>
 
           <div class="mb-3">
             <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            <input v-model="address2" type="text" class="form-control" id="address2" placeholder="Apartment or suite">
           </div>
 
           <div class="row">
             <div class="col-md-5 mb-3">
               <label for="country">Country</label>
-              <input type="text" class="form-control" id="country" placeholder="country">
+              <input v-model="country" type="text" class="form-control" id="country" placeholder="country">
             </div>
 
             <div class="col-md-4 mb-3">
               <label for="city">City</label>
-              <input type="text" class="form-control" id="city" placeholder="city">
+              <input v-model="city" type="text" class="form-control" id="city" placeholder="city">
             </div>
 
             <div class="col-md-3 mb-3">
               <label for="zip">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="zip" required>
+              <input v-model="zip" type="text" class="form-control" id="zip" placeholder="zip" required>
             </div>
           </div>
 
@@ -85,7 +85,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import axios from 'axios'
 
@@ -110,9 +110,42 @@ export default Vue.extend( {
      return {
          user: null,
          products: [],
-         quantities: []
+         quantities: [],
+         first_name: '',
+         last_name: '',
+         email: '',
+         address: '',
+         address2: '',
+         country: '',
+         city: '',
+         zip: '',
      }
  },
+    methods: {
+        async submit() {
+    const {data} = await axios.post(`http://admin.test/api/checkout/orders`, {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+        address: this.address,
+        address2: this.address2,
+        country: this.country,
+        city: this.city,
+        zip: this.zip,
+        code: this.$route.params.code,
+        items: this.products.map(p => {
+            return {
+                product_id: p.id,
+                quantity: this.quantities[p.id]
+            }
+        })
+    });
+    await this.$stripe.import().redirectToCheckout({
+        sessionId: data.id
+    });
+    // console.log(data);
+    }
+},
     computed: {
      total() {
          let total = 0;
@@ -122,7 +155,6 @@ export default Vue.extend( {
                  total += p.price * this.quantities[p.id]
              }
          );
-
          return total;
      }
     }
