@@ -1,47 +1,38 @@
 <template>
     <form class="form-signin" @submit.prevent="submit">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus v-model="email">
+        <input v-model="email" type="email" class="form-control" placeholder="Email" required/>
+        <input v-model="password" type="password" class="form-control" placeholder="Password" required/>
 
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </template>
 
 <script>
-    import {ref} from 'vue';
     import axios from 'axios';
-    import {useRouter} from 'vue-router';
 
     export default {
         name: "Login",
-        setup () {
-            const email = ref('');
-            const password = ref('');
-            const router = useRouter();
-
-            const submit = async () => {
+        data() {
+            return {
+                email: '',
+                password: ''
+            }
+        },
+        methods: {
+            async submit() {
                 const response = await axios.post('login', {
-                    email: email.value,
-                    password: password.value,
-                    scope: 'admin'
+                    email: this.email,
+                    password: this.password,
+                    scope: 'influencer'
                 });
 
                 localStorage.setItem('token', response.data.token);
                 axios.defaults.headers['Authorization'] =  `Bearer ${response.data.token}`;
 
-                await router.push('/');
+                await this.$router.push('/');
             }
-            return {
-                email,
-                password,
-                submit
-            }
-
         }
     }
 </script>
@@ -53,8 +44,15 @@
     }
 
     body {
+        display: -ms-flexbox;
+        display: -webkit-box;
         display: flex;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+        -webkit-box-align: center;
         align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
         padding-top: 40px;
         padding-bottom: 40px;
         background-color: #f5f5f5;
@@ -64,7 +62,7 @@
         width: 100%;
         max-width: 330px;
         padding: 15px;
-        margin: auto;
+        margin: 0 auto;
     }
     .form-signin .checkbox {
         font-weight: 400;
