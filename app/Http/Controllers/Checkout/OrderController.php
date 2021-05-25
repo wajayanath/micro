@@ -62,21 +62,22 @@ class OrderController
             ];
         }
 
-        $stripe = Stripe::make(env('STRIPE_SECRET'));
-
-        $source = $stripe->checkout()->sessions()->create([
-            'payment_method_type' => ['card'],
-            'line_items' => $lineItems,
-            'success_url' => env('CHECKOUT_URL').'/success?source={CHECKOUT_SESSION_ID}',
-            'cancel_url' => env('CHECKOUT_URL').'/error',
-        ]);
-
-        $order->transaction_id = $source['id'];
+//        $stripe = Stripe::make(env('STRIPE_SECRET'));
+//
+//        $source = $stripe->checkout()->sessions()->create([
+//            'payment_method_type' => ['card'],
+//            'line_items' => $lineItems,
+//            'success_url' => env('CHECKOUT_URL').'/success?source={CHECKOUT_SESSION_ID}',
+//            'cancel_url' => env('CHECKOUT_URL').'/error',
+//        ]);
+//
+//        $order->transaction_id = $source['id'];
         $order->save();
 
         \DB::commit();
 
-        return $source;
+//        return $source;
+        return $order;
     }
 
     public function confirm(Request $request)

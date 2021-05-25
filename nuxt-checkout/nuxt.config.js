@@ -37,7 +37,10 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+      ['nuxt-stripe-module', {
+          publishableKey: 'pk_test_51Io04XAc4emwZEsHhqeDDW6ZBqEvdOSlSrNv0Q1jjpJujlFCFywZW6kC34baastb8tiUo563cwfp3gyhqHfTcqgf004gJ8imjs',
+      }],
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
